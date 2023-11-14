@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider_lesson/counter_provider.dart';
+import 'package:provider_lesson/providers/counter_provider.dart';
 import 'home.dart';
 
 class App extends StatelessWidget {

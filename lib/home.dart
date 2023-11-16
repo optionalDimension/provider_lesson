@@ -22,10 +22,29 @@ class MyHomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                context.watch<CounterProvider>().activityModel?.activity ?? '',
-              ),
-              Text(
                 context.watch<CounterProvider>().meals?.first.strMeal ?? '',
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Category: '),
+                  Text(
+                    context.watch<CounterProvider>().meals?.first.strCategory ??
+                        '',
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '${context.watch<CounterProvider>().meals?.first.strIngredient1 ?? ''}:',
+                  ),
+                  Text(
+                    context.watch<CounterProvider>().meals?.first.strMeasure1 ??
+                        '',
+                  ),
+                ],
               ),
               Text(
                 '${context.watch<CounterProvider>().counter}',

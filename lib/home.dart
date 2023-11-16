@@ -21,8 +21,11 @@ class MyHomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
+              Text(
+                context.watch<CounterProvider>().activityModel?.activity ?? '',
+              ),
+              Text(
+                context.watch<CounterProvider>().meals?.first.strMeal ?? '',
               ),
               Text(
                 '${context.watch<CounterProvider>().counter}',
@@ -38,13 +41,20 @@ class MyHomePage extends StatelessWidget {
           FloatingActionButton(
             onPressed: () {
               context.read<CounterProvider>().incrementCounter();
+              // context.read<CounterProvider>().getActivity();
+              context.read<CounterProvider>().listMeal();
             },
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
+          const SizedBox(
+            height: 8,
+          ),
           FloatingActionButton(
             onPressed: () {
               context.read<CounterProvider>().decrementCounter();
+              // context.read<CounterProvider>().getActivity();
+              context.read<CounterProvider>().listMeal();
             },
             tooltip: 'Increment',
             child: const Icon(Icons.remove),

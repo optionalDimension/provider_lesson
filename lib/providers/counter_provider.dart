@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider_lesson/models/activity.dart';
+import 'package:provider_lesson/models/category.dart';
 import 'package:provider_lesson/models/meal.dart';
 import 'package:provider_lesson/services/api.dart';
 
@@ -7,8 +7,9 @@ class CounterProvider extends ChangeNotifier {
   int counter = 0;
   Color color = Colors.red;
   double height = 300.0;
-  ActivityModel? activityModel;
   List<MealModel>? meals;
+  List<CategoryModel>? categories;
+
   bool isLoading = false;
 
   void incrementCounter() {
@@ -25,20 +26,18 @@ class CounterProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getActivity() async {
-    setStatus(true);
-    // ActivityModel data = await Api().getActivity();
-    // setActivity(data);
-  }
-
-  setActivity(data) {
-    activityModel = data;
-    setStatus(false);
-    notifyListeners();
-  }
-
   setStatus(value) {
     isLoading = value;
+  }
+
+  void listCategories() async {
+    List<CategoryModel> data = await Api().listCategories();
+    setCategories(data);
+  }
+
+  setCategories(data) {
+    categories = data;
+    notifyListeners();
   }
 
   void listMeal() async {
